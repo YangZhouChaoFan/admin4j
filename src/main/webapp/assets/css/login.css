@@ -1,0 +1,10 @@
+::-webkit-scrollbar {width:0}
+
+body{
+    background: url("../img/bg.jpg");
+}
+
+a,span,label,th,td,div{
+    font-size: 12px;
+    font-family: 'Microsoft Yahei';
+}

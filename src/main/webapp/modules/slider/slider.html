@@ -1,0 +1,26 @@
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href><i class="fa fa-dashboard"></i> 功能 </a></li>
+        <li><a href="#/slider"><i class="fa fa-exchange"></i> 滑块 </a></li>
+    </ol>
+</section>
+
+<div class="container">
+    <div class="form-group col-md-6">
+        <div class="input-group">
+            <span class="input-group-addon">容量</span>
+            <input type="number" class="form-control"
+                   ng-model="capacity"
+                   ng-blur="
+                   capacity<slider.options.floor?capacity=slider.options.floor:capacity;
+                   capacity>slider.options.ceil?capacity=slider.options.ceil:capacity
+                   ">
+        </div>
+        <div style="padding-left: 15px; padding-right: 15px;">
+            <rzslider ng-init="capacity=slider.options.floor"
+                      rz-slider-model="capacity"
+                      rz-slider-options="slider.options"></rzslider>
+        </div>
+    </div>
+
+</div>

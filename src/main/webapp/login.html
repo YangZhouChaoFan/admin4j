@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh_cn" ng-app="app">
+<head>
+    <title>登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" charset="utf-8">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/login.css">
+</head>
+<body>
+<div class="container" style="width: 600px; padding-top:120px; opacity: 0.85;">
+    <div class="panel panel-default">
+        <div class="panel-body" style="">
+            <div class="col-sm-5" style="margin-top: 60px; text-align: center; border-right: 1px solid #eeeeee">
+                <img src="assets/img/logo.png" width="100" alt="logo">
+            </div>
+            <form class="form-login col-sm-7" ng-controller="loginCtrl" method="post">
+                <h2 class="form-login-heading">
+                    <b>A<small>dmin</small></b>
+                </h2>
+                <br>
+                <div class="form-group has-feedback">
+                    <label for="email" class="sr-only"> 邮箱 </label>
+                    <input ng-model="user.email" type="email" id="email" name="email" class="form-control"
+                           placeholder="Email" required autofocus/>
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <label for="password" class="sr-only"> 密码 </label>
+                    <input ng-model="user.password" type="password" id="password" name="password" class="form-control"
+                           placeholder="Password" required>
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="form-group">
+                    <button ng-click="register()" type="button" class="btn btn-warning">注册</button>
+                    <button ng-click="login()" type="submit" class="btn btn-primary">登录</button>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> 记住账号
+                    </label>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script>
+    var app = angular.module('app', []);
+    app.controller('loginCtrl', function ($scope, $http) {
+        $scope.register = function (){
+            window.location.href = "register.html";
+        }
+        $scope.login = function(){
+            window.location.href = "index.html";
+        };
+    });
+</script>
+</body>
+</html>

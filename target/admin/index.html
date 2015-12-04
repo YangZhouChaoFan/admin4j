@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="angular-demo">
+    <meta name="author" content="chenhao">
+    <title>首页</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-ui-grid/ui-grid.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-bootstrap-nav-tree/dist/abn_tree.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-loading-bar/build/loading-bar.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/angularjs-slider/dist/rzslider.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/app.css">
+</head>
+<body>
+
+<header id="header" class="navbar-default" ng-controller="navbarCtrl">
+    <div class="container-fluid">
+        <div class="navbar-header col-md-2">
+            <!--<button type="button" class="navbar-toggle" ng-click="navCollapsed = !navCollapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>-->
+            <a class="navbar-brand" href="#">
+                <b>A<small>dmin</small></b>
+            </a>
+        </div>
+        <div uib-collapse="!navCollapsed" class="navbar-collapse collapse">
+            <form id="searchBar" class="navbar-form navbar-left has-feedback">
+                <input type="text" class="form-control" placeholder="搜索...">
+                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+            </form>
+            <ul class="nav navbar-nav navbar-right navbar-btns">
+                <li uib-dropdown>
+                    <a href uib-dropdown-toggle>账号</a>
+                    <ul class="uib-dropdown-menu dropdown-menu">
+                        <li><a href >信息</a></li>
+                        <li class="divider"></li>
+                        <li><a href ng-click="logout()">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div id="container" class="container-fluid">
+    <div id="slider-menu" class="col-md-2" ng-class="{'slider-menu-hide': sliderHidden}">
+        <ul class='nav'>
+            <li ng-click="sliderHidden=!sliderHidden" class="slider-menu-ctrl-max" ng-class="{'slider-menu-ctrl-min': sliderHidden}">
+                <a href='javascript:;' class="navControll"><i class='fa fa-list'></i></a>
+            </li>
+            <li><a href='#/home'><i class='fa fa-home'></i><span>首页</span></a></li>
+            <li>
+                <a href="javascript:;" ng-click="menuCcollapse=!menuCcollapse">
+                    <i class='fa fa-dashboard'></i>
+                    <span>功能</span>
+                </a>
+            </li>
+            <ul class="nav nav-sub collapse" uib-collapse="!menuCcollapse">
+                <li><a href='#/grid'><i class='fa fa-file-excel-o'></i><span>表格</span></a></li>
+                <li><a href='#/modal'><i class='fa fa-tablet'></i><span>弹窗</span></a></li>
+                <li><a href='#/tree'><i class='fa fa-tree'></i><span>菜单</span></a></li>
+                <li><a href='#/slider'><i class='fa fa-exchange'></i><span>滑块</span></a></li>
+                <li><a href='#/upload'><i class='fa fa-upload'></i><span>上传</span></a></li>
+            </ul>
+        </ul>
+    </div>
+    <div id="content" class="col-md-10" ng-class="{'content-max': sliderHidden}" ng-view>
+
+    </div>
+</div>
+
+<script data-main="config.js" src="bower_components/requirejs/require.js"></script>
+</body>
+</html>

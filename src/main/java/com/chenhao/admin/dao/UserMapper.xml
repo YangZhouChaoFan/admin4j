@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.chenhao.admin.dao.UserDao">
+
+    <select id="queryUserById" resultType="com.chenhao.admin.model.User" parameterType="java.lang.Integer">
+        select
+            id,
+            ename,
+            name,
+            password,
+            age,
+            birthday,
+            sex,
+            role
+        from user t where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="queryUser" resultType="com.chenhao.admin.model.User" parameterType="java.util.Map">
+        select
+            id,
+            ename,
+            name,
+            password,
+            age,
+            birthday,
+            sex,
+            role
+        from user where 1=1
+        <if test="id != null and id != ''">
+            AND id = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="ename != null and ename != ''">
+            AND ename = #{ename,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null and name != ''">
+            AND name = #{name,jdbcType=VARCHAR}
+        </if>
+        <if test="password != null and password != ''">
+            AND password = #{password,jdbcType=VARCHAR}
+        </if>
+        <if test="age != null and age != ''">
+            AND age = #{age,jdbcType=VARCHAR}
+        </if>
+        <if test="birthdayFrom != null and birthdayFrom != ''">
+            AND birthday &gt;= #{birthdayFrom,jdbcType=DATE}
+        </if>
+        <if test="birthdayTo != null and birthdayTo != ''">
+            AND birthday &lt;= #{birthdayTo,jdbcType=DATE}
+        </if>
+        <if test="sex != null and sex != ''">
+            AND sex = #{sex,jdbcType=VARCHAR}
+        </if>
+        <if test="role != null and role != ''">
+            AND role = #{role,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <insert id="insertUser" parameterType="com.chenhao.admin.model.User">
+      INSERT INTO user
+      (
+	    ename,
+	    name,
+	    password,
+	    age,
+	    birthday,
+	    sex,
+	    role
+	  )VALUES
+	  (
+        #{ename,jdbcType=VARCHAR},
+        #{name,jdbcType=VARCHAR},
+        #{password,jdbcType=VARCHAR},
+        #{age,jdbcType=INTEGER},
+        #{birthday,jdbcType=DATE},
+        #{sex,jdbcType=VARCHAR},
+        #{role,jdbcType=VARCHAR}
+	  )
+    </insert>
+
+    <update id="updateUser" parameterType="com.chenhao.admin.model.User">
+        UPDATE user
+        SET
+            ename = #{ename,jdbcType=VARCHAR},
+            name = #{name,jdbcType=VARCHAR},
+            password = #{password,jdbcType=VARCHAR},
+            age = #{age,jdbcType=INTEGER},
+            birthday = #{birthday,jdbcType=DATE},
+            sex = #{sex,jdbcType=VARCHAR},
+            role = #{role,jdbcType=VARCHAR}
+        WHERE
+          id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <delete id="deleteUser" parameterType="java.util.ArrayList">
+        delete from user where id in
+        <foreach collection="list" item = "id" open="(" separator="," close=")">#{id, jdbcType=INTEGER}</foreach>
+    </delete>
+
+</mapper>

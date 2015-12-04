@@ -1,0 +1,57 @@
+<div class="modal-header">
+    <h3 class="modal-title">新增</h3>
+</div>
+<div class="modal-body">
+    <table class="table">
+        <tr>
+            <th width="15%">中文名称</th>
+            <td width="35%"><input class="form-control" ng-model="user.name"></td>
+            <th width="15%">英文名称</th>
+            <td width="35%"><input class="form-control" ng-model="user.ename"></td>
+        </tr>
+        <tr>
+            <th>密码</th>
+            <td class="input-group">
+                <input class="form-control" type="{{!showPwd?'password':'text'}}" ng-model="user.password">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="showPwd=!showPwd">
+                        <i class="glyphicon" ng-class="{'glyphicon-eye-open': !showPwd, 'glyphicon-eye-close': showPwd}"></i>
+                    </button>
+                </span>
+            </td>
+            <th>性别</th>
+            <td>
+                <div class="btn-group btn-group-sm">
+                    <label class="btn btn-primary" ng-model="user.sex" uib-btn-radio="'男'" uncheckable>男</label>
+                    <label class="btn btn-danger" ng-model="user.sex" uib-btn-radio="'女'" uncheckable>女</label>
+                </div>
+                <span>{{user.sex}}</span>
+            </td>
+        </tr>
+        <tr>
+            <th>年龄</th>
+            <td><input class="form-control" type="number" ng-model="user.age"></td>
+            <th>生日</th>
+            <td class="input-group">
+                <input type="date" class="form-control" uib-datepicker-popup="yyyy/MM/dd" is-open="birthdaySelect" ng-model="user.birthday"/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="birthdaySelect=!birthdaySelect">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <th>角色</th>
+            <td>
+                <select class="form-control" ng-model="user.role" ng-options="role.name as role.name for role in options.role">
+                    <option value="">请选择</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">保存</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+</div>
