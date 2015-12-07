@@ -161,13 +161,6 @@
             <version>${jackson.fasterxml.version}</version>
         </dependency>
 
-        <!-- Quartz framework -->
-        <!--<dependency>
-            <groupId>org.quartz-scheduler</groupId>
-            <artifactId>quartz</artifactId>
-            <version>${quartz.version}</version>
-        </dependency>-->
-
         <!-- jstl -->
         <dependency>
             <groupId>javax.servlet</groupId>
