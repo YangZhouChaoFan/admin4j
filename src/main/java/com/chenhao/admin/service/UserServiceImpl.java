@@ -1,6 +1,6 @@
 package com.chenhao.admin.service;
 
-import com.chenhao.admin.dao.UserDao;
+import com.chenhao.admin.dao.UserMapper;
 import com.chenhao.admin.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ import java.util.Map;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    public UserDao userDao;
+    public UserMapper userDao;
 
     @Override
     public User queryUserById(int id) {
