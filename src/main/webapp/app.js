@@ -9,28 +9,28 @@
 define([
     'app.route',
     'angular',
-    'angular-i18n',
     'angular-animate',
-    'angular-route',
     'angular-bootstrap',
-    'angular-loading-bar',
-    'angular-ui-grid',
     'angular-bootstrap-nav-tree',
-    'angularjs-slider'
+    'angular-i18n',
+    'angular-loading-bar',
+    'angular-route',
+    'angular-slider',
+    'angular-ui-grid'
 ], function (routesConfig) {
 
     // 创建app模块
     var app = angular.module('app', [
+        'angularBootstrapNavTree',
+        'cfp.loadingBar',
         'ngAnimate',
         'ngRoute',
+        'rzModule',
         'ui.bootstrap',
         'ui.grid',
         'ui.grid.selection',
         'ui.grid.autoResize',
-        'ui.grid.resizeColumns',
-        'cfp.loadingBar',
-        'angularBootstrapNavTree',
-        'rzModule'
+        'ui.grid.resizeColumns'
     ]);
 
     // 配置分页参数
