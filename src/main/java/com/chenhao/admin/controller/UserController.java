@@ -3,10 +3,12 @@ package com.chenhao.admin.controller;
 import com.alibaba.fastjson.JSON;
 import com.chenhao.admin.model.User;
 import com.chenhao.admin.service.UserService;
+import com.chenhao.admin.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -54,7 +56,10 @@ public class UserController {
 
     @RequestMapping("/insertUser")
     @ResponseBody
-    public Map<String, Object> insertUser(@RequestBody @Valid User user) {
+    public Map<String, Object> insertUser(@RequestBody @Valid User user,BindingResult binding) {
+        if(binding.hasErrors()){
+            return ResponseUtil.analyzeError(binding);
+        }
         Map<String, Object> res = new HashMap();
         userService.insertUser(user);
         res.put("status", "success");
@@ -63,7 +68,10 @@ public class UserController {
 
     @RequestMapping("/updateUser")
     @ResponseBody
-    public Map<String, Object> updateUser(@RequestBody @Valid User user) {
+    public Map<String, Object> updateUser(@RequestBody @Valid User user, BindingResult binding) {
+        if(binding.hasErrors()){
+            return ResponseUtil.analyzeError(binding);
+        }
         Map<String, Object> res = new HashMap();
         userService.updateUser(user);
         res.put("status", "success");

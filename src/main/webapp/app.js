@@ -132,10 +132,11 @@ define([
         this.open = function (scope, msg, callback) {
             $uibModal.open({
                 animation: true,
+                /*backdrop: false,*/
                 size: 'sm',
                 templateUrl: 'modules/ngConfirm/ngConfirm.html',
-                controller: function ($scope, $uibModalInstance, parentScope) {
-                    $scope.msg = msg;
+                controller: function ($scope, $uibModalInstance, $sce, parentScope) {
+                    $scope.msg = $sce.trustAsHtml(msg);
                     //保存
                     $scope.ok = function () {
                         callback();
@@ -158,10 +159,11 @@ define([
         this.open = function (msg, time) {
             $uibModal.open({
                 animation: true,
+                /*backdrop: false,*/
                 size: 'sm',
                 templateUrl: 'modules/ngAlert/ngAlert.html',
-                controller: function ($scope, $uibModalInstance) {
-                    $scope.msg = msg;
+                controller: function ($scope, $uibModalInstance, $sce) {
+                    $scope.msg = $sce.trustAsHtml(msg);
                     if (time) {
                         $timeout($scope.ok, time);
                     } else {

@@ -121,15 +121,16 @@ define(['angular'], function (angular) {
 
                     //保存
                     $scope.ok = function () {
-                        console.log($scope.user);
                         $http({
                             url: 'rest/userController/insertUser',
                             method: 'POST',
-                            data: $scope.user
+                            data: $scope.user || {}
                         }).success(function (result) {
                             if (result.status == 'success') {
                                 $uibModalInstance.close();
                                 parentScope.load();
+                            }else if(result.status == 'error'){
+                                ngAlert.open(result.msg);
                             }
                         }).error(function (msg) {
                             console.log(msg);
@@ -178,15 +179,16 @@ define(['angular'], function (angular) {
 
                     //保存
                     $scope.ok = function () {
-                        console.log($scope.user);
                         $http({
                             url: 'rest/userController/updateUser',
                             method: 'POST',
-                            data: $scope.user
+                            data: $scope.user || {}
                         }).success(function (result) {
                             if (result.status == 'success') {
                                 $uibModalInstance.close();
                                 parentScope.load();
+                            }else if(result.status == 'error'){
+                                ngAlert.open(result.msg);
                             }
                         }).error(function (msg) {
                             console.log(msg);
