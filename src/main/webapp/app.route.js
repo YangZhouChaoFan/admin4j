@@ -28,6 +28,12 @@ define([], function () {
                 dependencies: 'modules/grid/gridCtrl',
                 allowAnonymous: true
             },
+            '/text': {
+                templateUrl: 'modules/text/text.html',
+                controller: 'textCtrl',
+                dependencies: 'modules/text/textCtrl',
+                allowAnonymous: true
+            },
             '/modal': {
                 templateUrl: 'modules/modal/modal.html',
                 controller: 'modalCtrl',
