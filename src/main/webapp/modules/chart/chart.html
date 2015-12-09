@@ -5,5 +5,31 @@
     </ol>
 </section>
 <div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <canvas id="line" class="chart chart-line" chart-data="dataLine"
+                    chart-labels="labelsLine" chart-legend="true" chart-series="seriesLine"
+                    chart-click="onClickLine">
+            </canvas>
+        </div>
 
+        <div class="col-md-6">
+            <canvas id="bar" class="chart chart-bar"
+                    chart-data="dataBar" chart-labels="labelsBar"> chart-series="seriesBar"
+            </canvas>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <canvas id="pie" class="chart chart-pie"
+                    chart-data="dataPie" chart-labels="labelsPie">
+            </canvas>
+        </div>
+
+        <div class="col-md-6">
+            <canvas id="polar-area" class="chart chart-polar-area"
+                    chart-data="dataArea" chart-labels="labelsArea">
+            </canvas>
+        </div>
+    </div>
 </div>
