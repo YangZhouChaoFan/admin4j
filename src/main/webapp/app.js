@@ -17,8 +17,7 @@ define([
     'angular-loading-bar',
     'angular-route',
     'angular-slider',
-    'angular-ui-grid',
-    'chart'
+    'angular-ui-grid'
 ], function (routesConfig) {
 
     // 创建app模块
