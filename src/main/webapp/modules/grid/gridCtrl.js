@@ -7,7 +7,7 @@
 
 'use strict';
 define(['angular'], function (angular) {
-    return function ($scope, $http, $uibModal, i18nService, ngConfirm, ngAlert) {
+    return function ($scope, $http, $timeout, $uibModal, i18nService, ngConfirm, ngAlert) {
 
         //当前选择标志位
         $scope.zeroFlag = true;
@@ -84,7 +84,7 @@ define(['angular'], function (angular) {
         //加载grid数据
         $scope.load = function () {
             //打开等待动画，ajax请求数据
-            //$scope.data = [];
+            $scope.data = [];
             $scope.loading = true;
             $http({
                 url: 'rest/userController/queryUser',
