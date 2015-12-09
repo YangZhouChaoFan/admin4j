@@ -8,8 +8,7 @@ require.config({
 		'angular-ui-grid': 'bower_components/angular-ui-grid/ui-grid.min',
 		'angular-loading-bar': 'bower_components/angular-loading-bar/build/loading-bar.min',
 		'angular-bootstrap-nav-tree': 'bower_components/angular-bootstrap-nav-tree/dist/abn_tree_directive',
-		'angularjs-slider': 'bower_components/angularjs-slider/dist/rzslider.min',
-		'ng-file-upload': 'bower_components/ng-file-upload/ng-file-upload-all.min'
+		'angularjs-slider': 'bower_components/angularjs-slider/dist/rzslider.min'
 	},
 	shim: {                  
 		'angular': {

@@ -7,7 +7,7 @@
 
 'use strict';
 define(['angular'], function (angular) {
-    return function ($scope, $http, Upload) {
+    return function ($scope, $http) {
 
         //单文件上传
         $scope.upload = function () {
@@ -39,8 +39,5 @@ define(['angular'], function (angular) {
                 console.log(msg);
             });
         }
-
-        //插件版文件上传
-
     };
 });

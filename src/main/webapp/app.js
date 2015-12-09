@@ -16,8 +16,7 @@ define([
     'angular-loading-bar',
     'angular-ui-grid',
     'angular-bootstrap-nav-tree',
-    'angularjs-slider',
-    'ng-file-upload'
+    'angularjs-slider'
 ], function (routesConfig) {
 
     // 创建app模块
@@ -31,8 +30,7 @@ define([
         'ui.grid.resizeColumns',
         'cfp.loadingBar',
         'angularBootstrapNavTree',
-        'rzModule',
-        'ngFileUpload'
+        'rzModule'
     ]);
 
     // 配置分页参数
