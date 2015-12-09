@@ -15,7 +15,8 @@
     "angular-i18n": "~1.4.8",
     "angular-bootstrap-nav-tree": "*",
     "angularjs-slider": "~2.1.0",
-    "ng-file-upload": "~10.1.7"
+    "ng-file-upload": "~10.1.7",
+    "angular-chart.js": "~0.8.8"
   },
   "devDependencies": {}
 }

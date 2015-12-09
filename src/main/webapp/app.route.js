@@ -16,6 +16,12 @@ define([], function () {
                 dependencies: 'modules/home/homeCtrl',
                 allowAnonymous: true
             },
+            '/chart': {
+                templateUrl: 'modules/chart/chart.html',
+                controller: 'chartCtrl',
+                dependencies: 'modules/chart/chartCtrl',
+                allowAnonymous: true
+            },
             '/grid': {
                 templateUrl: 'modules/grid/grid.html',
                 controller: 'gridCtrl',
