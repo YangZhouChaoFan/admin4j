@@ -12,17 +12,20 @@ define([
     'angular-animate',
     'angular-bootstrap',
     'angular-bootstrap-nav-tree',
+    'angular-chart',
     'angular-i18n',
     'angular-loading-bar',
     'angular-route',
     'angular-slider',
-    'angular-ui-grid'
+    'angular-ui-grid',
+    'chart'
 ], function (routesConfig) {
 
     // 创建app模块
     var app = angular.module('app', [
         'angularBootstrapNavTree',
         'cfp.loadingBar',
+        'chart.js',
         'ngAnimate',
         'ngRoute',
         'rzModule',
