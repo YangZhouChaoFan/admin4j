@@ -16,7 +16,8 @@
     "Chart.js": "~1.0.2",
     "font-awesome": "~4.4.0",
     "ionicons": "~2.0.1",
-    "requirejs": "~2.1.22"
+    "requirejs": "~2.1.22",
+    "textAngular": "~1.4.6"
   },
   "devDependencies": {}
 }
