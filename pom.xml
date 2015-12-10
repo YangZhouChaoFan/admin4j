@@ -249,6 +249,15 @@
                 </includes>
                 <filtering>true</filtering>
             </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>*.properties</include>
+                    <include>*.xml</include>
+                    <include>*.tld</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
         </resources>
         <plugins>
             <!--maven配置-->
