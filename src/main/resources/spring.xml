@@ -9,7 +9,6 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--读取配置文件-->
-    <!--<context:property-placeholder location="classpath:*.properties" />-->
     <!--<bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
@@ -18,7 +17,7 @@
             </list>
         </property>
     </bean>-->
-    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+    <!--<bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="locations">
             <list>
                 <value>classpath:jdbc.properties</value>
@@ -29,7 +28,8 @@
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="ignoreResourceNotFound" value="false"/>
         <property name="properties" ref="configProperties"/>
-    </bean>
+    </bean>-->
+    <context:property-placeholder location="classpath*:*.properties" />
 
     <!--导入mybatis配置文件-->
     <import resource="classpath:spring-mybatis.xml"/>
