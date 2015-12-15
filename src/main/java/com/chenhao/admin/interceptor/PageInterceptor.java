@@ -135,7 +135,7 @@ public class PageInterceptor implements Interceptor {
     private String getOraclePageSql(Map<String, Object> map, StringBuffer sqlBuffer) {
         //计算第一条记录的位置，Oracle分页是通过rownum进行的，而rownum是从1开始的
         int offset = (Integer.parseInt(map.get("pageNo").toString())  - 1) * Integer.parseInt(map.get("pageSize").toString());
-        sqlBuffer.insert(0, "select u.*, rownum r from (").append(") u where rownum < ").append(offset + map.get("pageSize").toString());
+        sqlBuffer.insert(0, "select u.*, rownum r from (").append(") u where rownum < ").append(offset + Integer.parseInt(map.get("pageSize").toString()));
         sqlBuffer.insert(0, "select * from (").append(") where r >= ").append(offset);
         //上面的Sql语句拼接之后大概是这个样子：
         //select * from (select u.*, rownum r from (select * from t_user) u where rownum < 31) where r >= 16
