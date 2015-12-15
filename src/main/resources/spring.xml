@@ -34,10 +34,10 @@
     <context:annotation-config />
 
 
-    <!--&lt;!&ndash;导入mybatis配置文件&ndash;&gt;
+    <!--导入mybatis配置文件-->
     <import resource="classpath:spring-mybatis.xml"/>
 
-    &lt;!&ndash;导入task配置文件&ndash;&gt;
-    <import resource="classpath:spring-task.xml"/>-->
+    <!--导入task配置文件-->
+    <import resource="classpath:spring-task.xml"/>
 
 </beans>
