@@ -7,8 +7,11 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.Properties;
 
 
 /**
@@ -22,6 +25,9 @@ public class MyTest {
 
     private static final Logger logger = LoggerFactory.getLogger(MyTest.class);
 
+    @Value("#{configProperties['jdbc.driverClassName']}")
+    String driverClassName = "";
+
     @Autowired
     private RoleMapper roleDao;
 
@@ -30,4 +36,10 @@ public class MyTest {
         String str = JSON.toJSONString(roleDao.selectByPrimaryKey(1));
         logger.info(str);
     }
+
+    @Test
+    public void test2(){
+        logger.info(this.driverClassName);
+    }
+
 }
