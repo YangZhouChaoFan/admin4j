@@ -26,7 +26,7 @@ public class Test1 {
     private RoleMapper roleDao;
 
     @Test
-    public void test1() {
+    public void test() {
         String str = JSON.toJSONString(roleDao.selectByPrimaryKey(1));
         logger.info(str);
     }
