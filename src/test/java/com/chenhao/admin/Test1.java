@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.Properties;
-
 
 /**
  * Created by chenhao on 2015/12/1.
@@ -21,12 +19,9 @@ import java.util.Properties;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring.xml"})
 
-public class MyTest {
+public class Test1 {
 
-    private static final Logger logger = LoggerFactory.getLogger(MyTest.class);
-
-    @Value("#{configProperties['jdbc.driverClassName']}")
-    String driverClassName = "";
+    private static final Logger logger = LoggerFactory.getLogger(Test1.class);
 
     @Autowired
     private RoleMapper roleDao;
@@ -35,11 +30,6 @@ public class MyTest {
     public void test1() {
         String str = JSON.toJSONString(roleDao.selectByPrimaryKey(1));
         logger.info(str);
-    }
-
-    @Test
-    public void test2(){
-        logger.info(this.driverClassName);
     }
 
 }
