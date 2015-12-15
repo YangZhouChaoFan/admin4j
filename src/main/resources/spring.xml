@@ -33,7 +33,6 @@
     <context:property-placeholder location="classpath*:*.properties" />
     <context:annotation-config />
 
-
     <!--导入mybatis配置文件-->
     <import resource="classpath:spring-mybatis.xml"/>
 
