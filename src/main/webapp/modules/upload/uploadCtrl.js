@@ -13,7 +13,6 @@ define(['angular'], function (angular) {
         $scope.upload = function () {
             var formData = new FormData();
             formData.append('file', $scope.file);
-            formData. $scope.user
             $http.post('rest/upload', formData, {
                 transformRequest: angular.identity,
                 headers: {'Content-Type': undefined}
@@ -29,7 +28,7 @@ define(['angular'], function (angular) {
             var formData = new FormData();
             angular.forEach($scope.files,function(file){
                 formData.append('files',file);
-            })
+            });
             $http.post('rest/multiUpload', formData, {
                 transformRequest: angular.identity,
                 headers: {'Content-Type': undefined}
