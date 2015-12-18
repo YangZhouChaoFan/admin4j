@@ -42,7 +42,7 @@
              ngf-resize="{width: 100, height: 100}">单文件</div>
         <button class="btn btn-sm btn-warning" ng-click="pluginUpload()">上传</button>
         <br><br>
-        <uib-progressbar value="progress"></uib-progressbar>
+        <uib-progressbar value="progress">{{progress + '%'}}</uib-progressbar>
     </div>
 
     <div class="input-group col-md-6">
@@ -54,7 +54,7 @@
              ngf-resize="{width: 100, height: 100}">多文件</div>
         <button class="btn btn-sm btn-warning" ng-click="pluginMultiUpload()">上传</button>
         <br><br>
-        <uib-progressbar value="progresses"></uib-progressbar>
+        <uib-progressbar value="progresses">{{progresses + '%'}}</uib-progressbar>
     </div>
 
 </div>
