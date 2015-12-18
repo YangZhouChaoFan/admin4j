@@ -17,7 +17,8 @@ define([
     'angular-loading-bar',
     'angular-route',
     'angular-slider',
-    'angular-ui-grid'
+    'angular-ui-grid',
+    'angular-upload'
 ], function (routesConfig) {
 
     // 创建app模块
@@ -27,6 +28,7 @@ define([
         'chart.js',
         'ngAnimate',
         'ngRoute',
+        'ngFileUpload',
         'rzModule',
         'ui.bootstrap',
         'ui.grid',

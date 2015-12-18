@@ -10,6 +10,7 @@ require.config({
         'angular-route': 'bower_components/angular-route/angular-route.min',
         'angular-slider': 'bower_components/angularjs-slider/dist/rzslider.min',
         'angular-ui-grid': 'bower_components/angular-ui-grid/ui-grid.min',
+        'angular-upload': 'bower_components/ng-file-upload/ng-file-upload-all.min',
         'chart': 'bower_components/Chart.js/Chart.min'
     },
     shim: {
@@ -24,7 +25,8 @@ require.config({
         'angular-loading-bar': ['angular'],
         'angular-route': ['angular'],
         'angular-slider': ['angular'],
-        'angular-ui-grid': ['angular']
+        'angular-ui-grid': ['angular'],
+        'angular-upload': ['angular']
     }
 });
 
