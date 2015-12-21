@@ -11,7 +11,12 @@ require.config({
         'angular-slider': 'bower_components/angularjs-slider/dist/rzslider.min',
         'angular-ui-grid': 'bower_components/angular-ui-grid/ui-grid.min',
         'angular-upload': 'bower_components/ng-file-upload/ng-file-upload-all.min',
-        'chart': 'bower_components/Chart.js/Chart.min'
+        'chart': 'bower_components/Chart.js/Chart.min',
+        'rangy-core': 'bower_components/rangy/rangy-core.min',
+        'rangy-selectionsave': 'bower_components/rangy/rangy-selectionsaverestore.min',
+        'textAngular-sanitize': 'bower_components/textAngular/dist/textAngular-sanitize.min',
+        'textAngularSetup': 'bower_components/textAngular/dist/textAngularSetup',
+        'textAngular': 'bower_components/textAngular/dist/textAngular'
     },
     shim: {
         'angular': {
@@ -26,8 +31,16 @@ require.config({
         'angular-route': ['angular'],
         'angular-slider': ['angular'],
         'angular-ui-grid': ['angular'],
-        'angular-upload': ['angular']
+        'angular-upload': ['angular'],
+        'rangy-selectionsave': ['rangy-core'],
+        'textAngular-sanitize': ['angular'],
+        'textAngularSetup': ['angular'],
+        'textAngular': ['angular', 'textAngular-sanitize', 'textAngularSetup']
     }
+});
+
+require(['rangy-core', 'rangy-selectionsave'], function(rangyCore){
+    window.rangy = rangyCore;
 });
 
 require(['angular', 'app'], function () {

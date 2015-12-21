@@ -18,7 +18,8 @@ define([
     'angular-route',
     'angular-slider',
     'angular-ui-grid',
-    'angular-upload'
+    'angular-upload',
+    'textAngular'
 ], function (routesConfig) {
 
     // 创建app模块
@@ -34,7 +35,8 @@ define([
         'ui.grid',
         'ui.grid.selection',
         'ui.grid.autoResize',
-        'ui.grid.resizeColumns'
+        'ui.grid.resizeColumns',
+        'textAngular'
     ]);
 
     // 配置分页参数
