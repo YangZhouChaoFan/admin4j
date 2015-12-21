@@ -55,15 +55,14 @@ define(['angular'], function (angular) {
                 //服务端接收
                 url: 'rest/upload',
                 //上传的同时带的参数
-                data: { 'userName': "chenhao" },
-                file: $scope.pluginFile
+                data: {file: $scope.pluginFile, 'userName': "chenhao" }
             }).progress(function (evt) {
                 //进度条
                 $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
-                console.log('progess:' + $scope.progress + '%' + evt.config.file.name);
+                console.log('progess:' + $scope.progress + '%' + evt.config.data.file.name);
             }).success(function (data, status, headers, config) {
                 //上传成功
-                console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+                console.log('file ' + config.data.file.name + 'uploaded. Response: ' + data);
                 $scope.uploadImg = data;
             }).error(function (data, status, headers, config) {
                 //上传失败
@@ -77,16 +76,16 @@ define(['angular'], function (angular) {
             Upload.upload({
                 //服务端接收
                 url: 'rest/multiUpload',
+                arrayKey: '',
                 //上传的同时带的参数
-                data: { 'userName': "chenhao" },
-                file: $scope.pluginFiles
+                data: {files: $scope.pluginFiles, 'userName': "chenhao" }
             }).progress(function (evt) {
                 //进度条
                 $scope.progresses = parseInt(100.0 * evt.loaded / evt.total);
-                console.log('progess:' + $scope.progresses + '%' + evt.config.file.name);
+                console.log('progess:' + $scope.progresses + '%');
             }).success(function (data, status, headers, config) {
                 //上传成功
-                console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+                console.log('file uploaded. Response: ' + data);
                 $scope.uploadImg = data;
             }).error(function (data, status, headers, config) {
                 //上传失败
