@@ -38,8 +38,8 @@
             <li class="list-group-item">文件大小：{{pluginFile.size}}</li>
         </ul>
         <div class="btn btn-sm btn-primary" ngf-select ng-model="pluginFile" ngf-pattern="'image/*'"
-             ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
-             ngf-resize="{width: 100, height: 100}">单文件</div>
+             ngf-accept="'image/*'" ngf-max-size="20MB">单文件
+        </div>
         <button class="btn btn-sm btn-warning" ng-click="pluginUpload()">上传</button>
         <br><br>
         <uib-progressbar value="progress">{{progress + '%'}}</uib-progressbar>
@@ -49,9 +49,10 @@
         <ul class="list-group">
             <li class="list-group-item">文件数量：{{pluginFiles.length}}</li>
         </ul>
-        <div class="btn btn-sm btn-primary" ngf-select ng-model="pluginFiles" ngf-multiple="true" ngf-pattern="'image/*'"
-             ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
-             ngf-resize="{width: 100, height: 100}">多文件</div>
+        <div class="btn btn-sm btn-primary" ngf-select ng-model="pluginFiles" ngf-multiple="true"
+             ngf-pattern="'image/*'"
+             ngf-accept="'image/*'" ngf-max-size="20MB">多文件
+        </div>
         <button class="btn btn-sm btn-warning" ng-click="pluginMultiUpload()">上传</button>
         <br><br>
         <uib-progressbar value="progresses">{{progresses + '%'}}</uib-progressbar>
