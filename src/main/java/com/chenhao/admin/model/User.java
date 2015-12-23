@@ -1,6 +1,7 @@
 package com.chenhao.admin.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -22,7 +23,7 @@ public class User {
     @NotNull(message = "年龄不能为空")
     private int age;
     @NotNull(message = "生日不能为空")
-    @JSONField(format = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyy-MM-dd")
     private Date birthday;
     @NotBlank(message = "性别不能为空")
     private String sex;

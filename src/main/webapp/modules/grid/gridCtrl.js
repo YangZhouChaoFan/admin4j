@@ -97,7 +97,7 @@ define(['angular'], function (angular) {
                 if (result.status == 'success') {
                     //关闭等待动画，获取数据
                     $scope.loading = false;
-                    $scope.data = JSON.parse(result.data);
+                    $scope.data = result.data;
                     $scope.totalItems = result.count;
                 }
             }).error(function (msg) {
@@ -171,7 +171,7 @@ define(['angular'], function (angular) {
                         method: 'POST'
                     }).success(function (result) {
                         if (result.status == 'success') {
-                            $scope.user = JSON.parse(result.data);
+                            $scope.user = result.data;
                             $scope.user.birthday = new Date($scope.user.birthday);
                         }
                     }).error(function (msg) {

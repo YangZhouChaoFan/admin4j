@@ -38,7 +38,7 @@ public class UserController {
     public Map<String, Object> queryUserById(int id) {
         Map<String, Object> res = new HashMap();
         User user = userService.queryUserById(id);
-        res.put("data", JSON.toJSONString(user));
+        res.put("data", user);
         res.put("status", "success");
         return res;
     }
@@ -49,7 +49,7 @@ public class UserController {
         Map<String, Object> res = new HashMap();
         List<User> users = userService.queryUser(map);
         res.put("status", "success");
-        res.put("data", JSON.toJSONString(users));
+        res.put("data", users);
         res.put("count", map.get("count"));
         return res;
     }
