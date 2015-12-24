@@ -11,44 +11,44 @@ http://www.springframework.org/schema/aop/spring-aop.xsd
 ">
 
     <!-- 配置数据源 -->
-    <!--<bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-        &lt;!&ndash;数据库连接&ndash;&gt;
+    <bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <!--数据库连接-->
         <property name="url" value="${jdbc.url}"/>
-        &lt;!&ndash;用户名&ndash;&gt;
+        <!--用户名-->
         <property name="username" value="${jdbc.username}"/>
-        &lt;!&ndash;密码&ndash;&gt;
+        <!--密码-->
         <property name="password" value="${jdbc.password}"/>
-        &lt;!&ndash; 初始化连接大小 &ndash;&gt;
+        <!-- 初始化连接大小 -->
         <property name="initialSize" value="${jdbc.initialSize}"/>
-        &lt;!&ndash; 连接池最大使用连接数量 &ndash;&gt;
+        <!-- 连接池最大使用连接数量 -->
         <property name="maxActive" value="${jdbc.maxActive}"/>
-        &lt;!&ndash; 连接池最大空闲 &ndash;&gt;
+        <!-- 连接池最大空闲 -->
         <property name="maxIdle" value="${jdbc.maxIdle}"/>
-        &lt;!&ndash; 连接池最小空闲 &ndash;&gt;
+        <!-- 连接池最小空闲 -->
         <property name="minIdle" value="${jdbc.minIdle}"/>
-        &lt;!&ndash; 获取连接最大等待时间 &ndash;&gt;
+        <!-- 获取连接最大等待时间 -->
         <property name="maxWait" value="${jdbc.maxWait}"/>
-        &lt;!&ndash; 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 &ndash;&gt;
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
         <property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}"/>
-        &lt;!&ndash; 配置一个连接在池中最小生存的时间，单位是毫秒 &ndash;&gt;
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
         <property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdleTimeMillis}"/>
-        &lt;!&ndash; 打开removeAbandoned功能 &ndash;&gt;
+        <!-- 打开removeAbandoned功能 -->
         <property name="removeAbandoned" value="${jdbc.removeAbandoned}"/>
-        &lt;!&ndash; 1800秒，也就是30分钟 &ndash;&gt;
+        <!-- 1800秒，也就是30分钟 -->
         <property name="removeAbandonedTimeout" value="${jdbc.removeAbandonedTimeout}"/>
-        &lt;!&ndash; 关闭abanded连接时输出错误日志 &ndash;&gt;
+        <!-- 关闭abanded连接时输出错误日志 -->
         <property name="logAbandoned" value="${jdbc.logAbandoned}"/>
         <property name="validationQuery" value="${jdbc.validationQuery}"/>
         <property name="testOnBorrow" value="${jdbc.testOnBorrow}"/>
         <property name="testOnReturn" value="${jdbc.testOnReturn}"/>
         <property name="testWhileIdle" value="${jdbc.testWhileIdle}"/>
-    </bean>-->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    </bean>
+    <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${jdbc.driverClassName}" />
         <property name="url" value="${jdbc.url}" />
         <property name="username" value="${jdbc.username}" />
         <property name="password" value="${jdbc.password}" />
-    </bean>
+    </bean>-->
 
     <!-- 分页拦截器 -->
     <bean id="pageInterceptor" class="com.chenhao.admin.interceptor.PageInterceptor">
