@@ -15,7 +15,8 @@
         </property>
     </bean>
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="ignoreResourceNotFound" value="false"/>
+        <property name="searchSystemEnvironment" value="true" />
+        <property name="ignoreResourceNotFound" value="true" />
         <property name="properties" ref="configProperties"/>
     </bean>
 
