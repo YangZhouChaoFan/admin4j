@@ -6,18 +6,13 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--读取配置文件-->
-    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
-                <value>classpath:jdbc.properties</value>
-                <value>classpath:log4j.properties</value>
+                <value>classpath*:jdbc.properties</value>
+                <value>classpath*:log4j.properties</value>
             </list>
         </property>
-    </bean>
-    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="searchSystemEnvironment" value="true" />
-        <property name="ignoreResourceNotFound" value="true" />
-        <property name="properties" ref="configProperties"/>
     </bean>
 
     <!--导入mybatis配置文件-->
