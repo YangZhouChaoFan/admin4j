@@ -23,7 +23,7 @@ public class User {
     @NotNull(message = "年龄不能为空")
     private int age;
     @NotNull(message = "生日不能为空")
-    @JsonFormat(pattern = "yyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
     @NotBlank(message = "性别不能为空")
     private String sex;
