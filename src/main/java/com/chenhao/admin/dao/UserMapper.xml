@@ -3,7 +3,7 @@
 
 <mapper namespace="com.chenhao.admin.dao.UserMapper">
 
-    <select id="login" resultType="java.util.Map" parameterType="java.util.Map">
+    <select id="login" resultType="com.chenhao.admin.model.User" parameterType="java.util.Map">
         select
             id,
             ename,

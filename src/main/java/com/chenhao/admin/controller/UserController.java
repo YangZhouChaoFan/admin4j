@@ -36,28 +36,33 @@ public class UserController {
     @ResponseBody
     public Response login(@RequestBody Map<String, Object> map) {
         Response res = new Response();
-        List<Map<String, Object>> users = userService.login(map);
+        List<User> users = userService.login(map);
         if (users == null || users.size() == 0) {
             return res.failure("登陆失败");
         }
         ShardedJedis shardedJedis = shardedJedisPool.getResource();
-        String skey = "session:" + users.get(0).get("id");
-        String token = UUID.randomUUID().toString();
-        if (shardedJedis.exists(skey)) {
-            String oldtoken = shardedJedis.get(skey);
-            shardedJedis.del(skey);
-            shardedJedis.del("token:" + oldtoken);
+        try {
+            String skey = "session:" + users.get(0).getId();
+            String token = UUID.randomUUID().toString();
+            if (shardedJedis.exists(skey)) {
+                String oldtoken = shardedJedis.get(skey);
+                shardedJedis.del(skey);
+                shardedJedis.del("token:" + oldtoken);
+            }
+            if (shardedJedis.setnx(skey, token) == 1) {
+                shardedJedis.expire(skey, 3600 * 24);
+                shardedJedis.hset("token:" + token, "name", users.get(0).getName());
+                shardedJedis.expire("token:" + token, 3600 * 24);
+            } else {
+                token = shardedJedis.get(skey);
+            }
+            Map<String, Object> data = new HashMap<>();
+            data.put("token", token);
+            return new Response().success(data);
+        } finally {
+            shardedJedis.close();
         }
-        if (shardedJedis.setnx(skey, token) == 1) {
-            shardedJedis.expire(skey, 3600 * 24);
-            shardedJedis.hset("token:" + token, "name", (String) users.get(0).get("name"));
-            shardedJedis.expire("token:" + token, 3600 * 24);
-        } else {
-            token = shardedJedis.get(skey);
-        }
-        Map<String, Object> data = new HashMap<>();
-        data.put("token", token);
-        return new Response().success(data);
+
     }
 
     @RequestMapping("/queryUserById")

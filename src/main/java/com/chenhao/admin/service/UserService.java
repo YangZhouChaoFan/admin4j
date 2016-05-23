@@ -22,5 +22,5 @@ public interface UserService {
 
     void deleteUser(ArrayList<Integer> ids);
 
-    List<Map<String,Object>> login(Map<String, Object> map);
+    List<User> login(Map<String, Object> map);
 }
