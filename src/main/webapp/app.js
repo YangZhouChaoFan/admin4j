@@ -71,7 +71,7 @@ define([
     });
 
     //http拦截器
-    app.factory("httpInterceptor", ["$q", "$rootScope", function ($q, $rootScope) {
+    app.factory("httpInterceptor", function ($q, $rootScope, $injector) {
         return {
             request: function (config) {
                 if (config.url.indexOf("rest") > -1) {
@@ -88,11 +88,14 @@ define([
             responseError: function (rejection) {
                 if (rejection.data.meta.message == "bad_token") {
                     window.location.href = "login.html";
+                } else {
+                    $injector.get('ngAlert').open(rejection.data.meta.message);
+                    //ngAlert.open(rejection.data.meta.message);
                 }
                 return $q.reject(rejection);
             }
         };
-    }]);
+    });
 
     // 配置app
     app.config(function ($httpProvider, $routeProvider, $locationProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, cfpLoadingBarProvider) {
