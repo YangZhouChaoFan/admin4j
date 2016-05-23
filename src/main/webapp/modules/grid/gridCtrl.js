@@ -94,7 +94,7 @@ define(['angular'], function (angular) {
                     pageSize: $scope.pageSize
                 }
             }).success(function (result) {
-                if (result.status == 'success') {
+                if (result.meta.success) {
                     //关闭等待动画，获取数据
                     $scope.loading = false;
                     $scope.data = result.data;
@@ -127,11 +127,11 @@ define(['angular'], function (angular) {
                             method: 'POST',
                             data: $scope.user || {}
                         }).success(function (result) {
-                            if (result.status == 'success') {
+                            if (result.meta.success) {
                                 $uibModalInstance.close();
                                 parentScope.load();
-                            }else if(result.status == 'error'){
-                                ngAlert.open(result.msg);
+                            }else if(!result.meta.success){
+                                ngAlert.open(result.meta.msg);
                             }
                         }).error(function (msg) {
                             console.log(msg);
@@ -170,7 +170,7 @@ define(['angular'], function (angular) {
                         url: 'rest/userController/queryUserById?id=' + parentScope.gridApi.selection.getSelectedRows()[0].id,
                         method: 'POST'
                     }).success(function (result) {
-                        if (result.status == 'success') {
+                        if (result.meta.success) {
                             $scope.user = result.data;
                             $scope.user.birthday = new Date($scope.user.birthday);
                         }
@@ -185,11 +185,11 @@ define(['angular'], function (angular) {
                             method: 'POST',
                             data: $scope.user || {}
                         }).success(function (result) {
-                            if (result.status == 'success') {
+                            if (result.meta.success) {
                                 $uibModalInstance.close();
                                 parentScope.load();
-                            }else if(result.status == 'error'){
-                                ngAlert.open(result.msg);
+                            }else if(!result.meta.success){
+                                ngAlert.open(result.meta.msg);
                             }
                         }).error(function (msg) {
                             console.log(msg);
@@ -222,7 +222,7 @@ define(['angular'], function (angular) {
                     method: 'POST',
                     data: ids
                 }).success(function (result) {
-                    if (result.status == 'success') {
+                    if (result.meta.success) {
                         $scope.load();
                     }
                 }).error(function (msg) {

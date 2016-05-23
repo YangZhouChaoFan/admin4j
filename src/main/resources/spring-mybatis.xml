@@ -51,7 +51,7 @@ http://www.springframework.org/schema/aop/spring-aop.xsd
     </bean>-->
 
     <!-- 分页拦截器 -->
-    <bean id="pageInterceptor" class="com.chenhao.admin.interceptor.PageInterceptor">
+    <bean id="pageInterceptor" class="com.chenhao.admin.filter.PageFilter">
         <property name="databaseType" value="mysql"/>
     </bean>
 

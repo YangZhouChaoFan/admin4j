@@ -21,4 +21,6 @@ public interface UserService {
     void updateUser(User user);
 
     void deleteUser(ArrayList<Integer> ids);
+
+    List<Map<String,Object>> login(Map<String, Object> map);
 }

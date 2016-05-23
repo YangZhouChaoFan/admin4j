@@ -9,7 +9,8 @@ import org.springframework.core.env.Environment;
 @Configuration
 @PropertySources({
         @PropertySource("classpath:jdbc.properties"),
-        @PropertySource("classpath:log4j.properties")
+        @PropertySource("classpath:log4j.properties"),
+        @PropertySource("classpath:redis.properties")
 })
 public class AppConfig {
     @Autowired

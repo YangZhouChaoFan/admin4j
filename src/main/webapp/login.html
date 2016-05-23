@@ -16,24 +16,26 @@
             </div>
             <form class="form-login col-sm-7" ng-controller="loginCtrl" method="post">
                 <h2 class="form-login-heading">
-                    <b>A<small>dmin</small></b>
+                    <b>A
+                        <small>dmin</small>
+                    </b>
                 </h2>
                 <br>
                 <div class="form-group has-feedback">
-                    <label for="email" class="sr-only"> 邮箱 </label>
-                    <input ng-model="user.email" type="email" id="email" name="email" class="form-control"
-                           placeholder="Email" required autofocus/>
+                    <label for="ename" class="sr-only"> 账号 </label>
+                    <input ng-model="user.ename" type="text" id="ename" name="ename" class="form-control"
+                           placeholder="账号" required autofocus/>
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
                     <label for="password" class="sr-only"> 密码 </label>
                     <input ng-model="user.password" type="password" id="password" name="password" class="form-control"
-                           placeholder="Password" required>
+                           placeholder="密码" required>
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <div class="form-group">
                     <button ng-click="register()" type="button" class="btn btn-warning">注册</button>
-                    <button ng-click="login()" type="submit" class="btn btn-primary">登录</button>
+                    <button ng-click="login()" type="button" class="btn btn-primary">登录</button>
                 </div>
                 <div class="checkbox">
                     <label>
@@ -49,11 +51,22 @@
 <script>
     var app = angular.module('app', []);
     app.controller('loginCtrl', function ($scope, $http) {
-        $scope.register = function (){
+        $scope.register = function () {
             window.location.href = "register.html";
         }
-        $scope.login = function(){
-            window.location.href = "index.html";
+        $scope.login = function () {
+            $http({
+                url: 'rest/userController/login',
+                method: 'POST',
+                data: $scope.user || {}
+            }).success(function (result) {
+                if (result.meta.success) {
+                    window.sessionStorage.setItem("token", result.data.token);
+                    window.location.href = "index.html";
+                }
+            }).error(function (msg) {
+                console.log(msg);
+            });
         };
     });
 </script>

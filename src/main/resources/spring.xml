@@ -11,6 +11,7 @@
             <list>
                 <value>classpath:jdbc.properties</value>
                 <value>classpath:log4j.properties</value>
+                <value>classpath:redis.properties</value>
             </list>
         </property>
     </bean>
@@ -23,5 +24,11 @@
 
     <!--导入task配置文件-->
     <import resource="classpath:spring-task.xml"/>
+
+    <!--扫描异常-->
+    <context:component-scan base-package="com.chenhao.admin.exception"/>
+
+    <!--导入cache配置文件-->
+    <import resource="classpath:spring-cache.xml"/>
 
 </beans>

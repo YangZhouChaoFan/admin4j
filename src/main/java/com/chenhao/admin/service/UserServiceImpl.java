@@ -44,4 +44,9 @@ public class UserServiceImpl implements UserService {
         userDao.deleteUser(ids);
     }
 
+    @Override
+    public List<Map<String, Object>> login(Map<String, Object> map) {
+        return userDao.login(map);
+    }
+
 }

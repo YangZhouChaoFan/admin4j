@@ -3,6 +3,22 @@
 
 <mapper namespace="com.chenhao.admin.dao.UserMapper">
 
+    <select id="login" resultType="java.util.Map" parameterType="java.util.Map">
+        select
+            id,
+            ename,
+            name,
+            password,
+            age,
+            birthday,
+            sex,
+            role
+        from user where
+            ename = #{ename,jdbcType=VARCHAR}
+            AND password = #{password,jdbcType=VARCHAR}
+
+    </select>
+
     <select id="queryUserById" resultType="com.chenhao.admin.model.User" parameterType="java.lang.Integer">
         select
             id,
@@ -18,14 +34,14 @@
 
     <select id="queryUser" resultType="com.chenhao.admin.model.User" parameterType="java.util.Map">
         select
-            id,
-            ename,
-            name,
-            password,
-            age,
-            birthday,
-            sex,
-            role
+        id,
+        ename,
+        name,
+        password,
+        age,
+        birthday,
+        sex,
+        role
         from user where 1=1
         <if test="id != null and id != ''">
             AND id = #{id,jdbcType=INTEGER}
@@ -94,7 +110,7 @@
 
     <delete id="deleteUser" parameterType="java.util.ArrayList">
         delete from user where id in
-        <foreach collection="list" item = "id" open="(" separator="," close=")">#{id, jdbcType=INTEGER}</foreach>
+        <foreach collection="list" item="id" open="(" separator="," close=")">#{id, jdbcType=INTEGER}</foreach>
     </delete>
 
 </mapper>

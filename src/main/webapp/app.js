@@ -70,8 +70,34 @@ define([
         onOpenFocus: true
     });
 
+    //http拦截器
+    app.factory("httpInterceptor", ["$q", "$rootScope", function ($q, $rootScope) {
+        return {
+            request: function (config) {
+                if (config.url.indexOf("rest") > -1) {
+                    config.headers.token = window.sessionStorage.getItem("token");
+                }
+                return config || $q.when(config);
+            },
+            requestError: function (rejection) {
+                return $q.reject(rejection)
+            },
+            response: function (response) {
+                return response || $q.when(response);
+            },
+            responseError: function (rejection) {
+                if (rejection.data.meta.message == "bad_token") {
+                    window.location.href = "login.html";
+                }
+                return $q.reject(rejection);
+            }
+        };
+    }]);
+
     // 配置app
-    app.config(function ($routeProvider, $locationProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, cfpLoadingBarProvider) {
+    app.config(function ($httpProvider, $routeProvider, $locationProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, cfpLoadingBarProvider) {
+
+        $httpProvider.interceptors.push("httpInterceptor");
 
         // 注册组件
         app.registerController = $controllerProvider.register;
@@ -115,6 +141,7 @@ define([
         if (routesConfig.defaultRoute != undefined) {
             $routeProvider.otherwise({redirectTo: routesConfig.defaultRoute});
         }
+
     });
 
     // 配置启动

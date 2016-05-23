@@ -1,5 +1,6 @@
 package com.chenhao.admin.controller;
 
+import com.chenhao.admin.model.Response;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -26,31 +26,24 @@ public class UploadController {
 
     @RequestMapping(value = "/upload")
     @ResponseBody
-    public Map<String, Object> upload(@RequestParam MultipartFile file, String userName, HttpServletRequest request) throws IOException {
-        logger.info(userName);
-        Map<String, Object> res = new HashMap();
+    public Response upload(@RequestParam MultipartFile file, String userName, HttpServletRequest request) throws IOException {
         if (!file.isEmpty()) {
             String realPath = request.getSession().getServletContext().getRealPath("/upload");
             FileUtils.copyInputStreamToFile(file.getInputStream(), new File(realPath, file.getOriginalFilename()));
         }
-        res.put("status", "success");
-        return res;
+        return new Response().success("上传成功");
     }
 
     @RequestMapping(value = "/multiUpload")
     @ResponseBody
-    public Map<String, Object> multiUpload(@RequestParam MultipartFile[] files, String userName, HttpServletRequest request) throws IOException {
-        logger.info(userName);
-        Map<String, Object> res = new HashMap();
+    public Response multiUpload(@RequestParam MultipartFile[] files, String userName, HttpServletRequest request) throws IOException {
         for (MultipartFile file : files) {
             if (!file.isEmpty()) {
                 String realPath = request.getSession().getServletContext().getRealPath("/upload");
                 FileUtils.copyInputStreamToFile(file.getInputStream(), new File(realPath, file.getOriginalFilename()));
             }
         }
-        res.put("status", "success");
-        return res;
-
+        return new Response().success("上传成功");
     }
 
 }

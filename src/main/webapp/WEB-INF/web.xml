@@ -42,6 +42,32 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <!--跨域拦截器-->
+    <filter>
+        <filter-name>corsFilter</filter-name>
+        <filter-class>com.chenhao.admin.filter.CorsFilter</filter-class>
+        <init-param>
+            <param-name>allowOrigin</param-name>
+            <param-value>http://web.xxx.com</param-value>
+        </init-param>
+        <init-param>
+            <param-name>allowMethods</param-name>
+            <param-value>GET,POST,PUT,DELETE,OPTIONS</param-value>
+        </init-param>
+        <init-param>
+            <param-name>allowCredentials</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <param-name>allowHeaders</param-name>
+            <param-value>Content-Type</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>corsFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <!-- Log4j监听器 -->
     <listener>
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
@@ -59,6 +85,16 @@
     <servlet-mapping>
         <servlet-name>admin</servlet-name>
         <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
+    <!--druid-->
+    <servlet>
+        <servlet-name>DruidStatView</servlet-name>
+        <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DruidStatView</servlet-name>
+        <url-pattern>/druid/*</url-pattern>
     </servlet-mapping>
 
 </web-app>
