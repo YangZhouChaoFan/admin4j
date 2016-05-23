@@ -49,8 +49,31 @@
 <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
 <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 <script>
-    var app = angular.module('app', []);
-    app.controller('loginCtrl', function ($scope, $http) {
+    var app = angular.module('app', ['ui.bootstrap']);
+    //配置提示工具
+    app.service('ngAlert', function ($q, $uibModal, $timeout) {
+        //alert提示框
+        this.open = function (msg, time) {
+            $uibModal.open({
+                animation: true,
+                /*backdrop: false,*/
+                size: 'sm',
+                templateUrl: 'modules/ngAlert/ngAlert.html',
+                controller: function ($scope, $uibModalInstance, $sce) {
+                    $scope.msg = $sce.trustAsHtml(msg);
+                    if (time) {
+                        $timeout($scope.ok, time);
+                    } else {
+                        $timeout($scope.ok);
+                    }
+                    $scope.ok = function () {
+                        $uibModalInstance.close();
+                    };
+                }
+            });
+        }
+    });
+    app.controller('loginCtrl', function ($scope, $http, ngAlert) {
         $scope.register = function () {
             window.location.href = "register.html";
         }
@@ -63,9 +86,11 @@
                 if (result.meta.success) {
                     window.sessionStorage.setItem("token", result.data.token);
                     window.location.href = "index.html";
+                } else {
+                    ngAlert.open(result.meta.message);
                 }
             }).error(function (msg) {
-                console.log(msg);
+                ngAlert.open(result.meta.message);
             });
         };
     });
