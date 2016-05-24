@@ -18,7 +18,7 @@ define(['angular'], function (angular) {
             var formData = new FormData();
             formData.append('file', $scope.file);
             formData.append('userName', 'chenhao');
-            $http.post('rest/upload', formData, {
+            $http.post('rest/uploadController/upload', formData, {
                 transformRequest: angular.identity,
                 headers: {'Content-Type': undefined}
             }).success(function (data, status) {
@@ -53,7 +53,7 @@ define(['angular'], function (angular) {
         $scope.pluginUpload = function () {
             Upload.upload({
                 //服务端接收
-                url: 'rest/upload',
+                url: 'rest/uploadController/upload',
                 //上传的同时带的参数
                 data: {file: $scope.pluginFile, 'userName': "chenhao" }
             }).progress(function (evt) {

@@ -20,6 +20,7 @@ import java.util.Map;
  */
 
 @Controller
+@RequestMapping("/uploadController")
 public class UploadController {
 
     private static final Logger logger = LoggerFactory.getLogger(UploadController.class);

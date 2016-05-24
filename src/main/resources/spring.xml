@@ -12,6 +12,7 @@
                 <value>classpath:jdbc.properties</value>
                 <value>classpath:log4j.properties</value>
                 <value>classpath:redis.properties</value>
+                <value>classpath:activemq.properties</value>
             </list>
         </property>
     </bean>
@@ -27,5 +28,8 @@
 
     <!--导入cache配置文件-->
     <import resource="classpath:spring-cache.xml"/>
+
+    <!--导入mq配置文件-->
+    <import resource="spring-mq.xml"/>
 
 </beans>
